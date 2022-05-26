@@ -58,7 +58,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: '1、前言',
+            docId: '1、初识',
             label: 'redux',
           },
           {
