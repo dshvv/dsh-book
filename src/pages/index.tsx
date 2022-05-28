@@ -16,7 +16,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/redux/intro">
+            to="redux/1、初识">
             开始探索 - 😍
           </Link>
         </div>
