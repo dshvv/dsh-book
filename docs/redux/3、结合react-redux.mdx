@@ -5,29 +5,22 @@ hide_title: true
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
-import store from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/store/index.js";
 import Index from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/index.js";
 import App from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/App.js";
-import HooksApp from "!!raw-loader!/src/components/DocsRedux/ReactReduxHooksApp/App.js";
+import AppUseHooks from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/AppUseHooks.js";
 import Tips from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/compnents/Tips.js";
-import HooksTips from "!!raw-loader!/src/components/DocsRedux/ReactReduxHooksApp/compnents/Tips.js";
-import actionCreator from "!!raw-loader!/src/components/DocsRedux/ReactReduxHooksApp/store/action-creator.js";
-import TipsUseAcr from "!!raw-loader!/src/components/DocsRedux/ReactReduxHooksApp/compnents/TipsUseAcr.js";
+import TipsUseHooks from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/compnents/TipsUseHooks.js";
 
+![3.1](/img/redux/3.1.jpg)   
 👉[react-redux 官方文档](https://react-redux.js.org) 👈
 
+因为 redux 和 react 组件的组合使用耦合度太高，为了解耦redux官方额外设计了react-redux ，有了它我们便不再需要使用 store 的 subscribe 自己去订阅状态了。
 
-
-
-## 定义 store
-
-<CodeBlock language="js" title="src/store/index.js">
-  {store}
-</CodeBlock>
+通过 react-redux 帮我们把redux和react相连接，react项目中使用redux将灵活而高效。
 
 ## 注入到 React
 
-注入 the Redux Store 到 React
+注入 the redux store 到 react
 
 <CodeBlock language="jsx" title="src/index.jsx">
   {Index}
@@ -39,7 +32,7 @@ import TipsUseAcr from "!!raw-loader!/src/components/DocsRedux/ReactReduxHooksAp
 
 <Tabs>
   <TabItem value="新版用法" label="新版用法" default>
-    <CodeBlock language="jsx" title="src/App.jsx">{HooksApp}</CodeBlock>
+    <CodeBlock language="jsx" title="src/App.jsx">{AppUseHooks}</CodeBlock>
   </TabItem>
 
   <TabItem value="传统用法" label="传统用法">
@@ -53,130 +46,10 @@ import TipsUseAcr from "!!raw-loader!/src/components/DocsRedux/ReactReduxHooksAp
 
 <Tabs>
   <TabItem value="新版用法" label="新版用法" default>
-    <CodeBlock language="jsx" title="src/components/Tips.jsx">{HooksTips}</CodeBlock>
+    <CodeBlock language="jsx" title="src/components/Tips.jsx">{TipsUseHooks}</CodeBlock>
   </TabItem>
 
   <TabItem value="传统用法" label="传统用法">
     <CodeBlock language="jsx" title="src/components/Tips.jsx">{Tips}</CodeBlock>
   </TabItem>
 </Tabs>
-
-## 优化代码
-
-以上的写法和用法都没什么问题，是最基本的标准的用法，但在实际应用上，我们会发现有很多优化的地方。
-
-**优化 action**  
-在大型项目中，直接把 action 写在组件中，会很散乱，不好统一管理，而且也无法达到复用性，所以如果 action 多了的话。  
-又因为 action 的本质上也就是个包含特殊字段的对象，我们可以定一个函数来生成这个对象，这个函数俗称 action creator。  
-Action creator 的设计是由 Flux 架构来的产物，它是一种辅助用的函数，用来建立 Action 的。
-
-我们提取出一个 action生成器 即actionCreator ：
-<CodeBlock language="js" title="src/store/action-creator.js">
-  {actionCreator}
-</CodeBlock>
-
-然后在组件中使用
-
-<Tabs>
-  <TabItem value="使用actionCreator传递action" label="使用actionCreator传递action" default>
-    <CodeBlock language="jsx" title="src/components/Tips.jsx">{TipsUseAcr}</CodeBlock>
-  </TabItem>
-
-  <TabItem value="直接传递action" label="直接传递action">
-    <CodeBlock language="jsx" title="src/components/Tips.jsx">{HooksTips}</CodeBlock>
-  </TabItem>
-</Tabs>
-
-甚至我们可以更近一步封装 action， 将actionCreator的创建也提取出来
-
-```javascript title="src/store/redux-helper.js"
-/**
- * 生成actionCreator
- * @param action的type字段
- * @return actionCreator
- */
-export const creatActionCreator = (type) => {
-  const actionCreator = (payload) => {
-    return { type, payload };
-  };
-  return actionCreator;
-};
-```
-
-然后看看使用，是不是变得简洁起来了
-
-```javascript title="src/store/action-creator.js"
-import { creatActionCreator } from "./redux-helper";
-
-// creatActionCreator 来创建type为SET_MSG 的actionCreator
-export const setMsg = creatActionCreator("SET_MSG");
-```
-
-**优化 reducer**  
-Reducer 是一个函数，它接受当前的 state 和 action，（通过内部的逻辑处理，它来决定如何更新数据即）返回新的 state。  
-同样的，原生写法也过于模板化，代码很多是重复的，所以我们也可以对其优化。
-
-我们提取出一个reducer生成器：
-
-```javascript title="src/store/redux-helper.js"
-/**
- * 生成一个reducer
- * @param handlers修改状态的逻辑函数，initialState为状态初始值
- * @return 返回一个reducer函数
- */
-export const creatReducer = (handlers, initialState) => {
-  const reducer = (state = initialState, action) => {
-    for (const key in handlers) {
-      if (action.type === key) {
-        return handlers[key](state, action);
-      } else {
-        return initialState;
-      }
-    }
-  };
-  return reducer;
-};
-```
-
-然后看看使用，是不是变得简洁起来了
-
-<Tabs>
-  <TabItem value="优化后" label="优化后" default>
-
-```js title="src/store/index.js"
-import { createStore } from "redux";
-import { creatReducer } from "./redux-helper";
-import { setMsg } from "./action-creator";
-
-// state
-const initialState = {
-  msg: "张三",
-};
-
-// reducer
-const reducer = creatReducer({
-  [setMsg().type](state, action) {
-    return { ...state, ...{ msg: action.payload } };
-  },
-},initialState);
-
-// store
-export default createStore(reducer);
-```
-
-  </TabItem>
-
-  <TabItem value="优化前" label="优化前">
-    <CodeBlock language="js" title="src/store/index.js">
-      {store}
-    </CodeBlock>
-  </TabItem>
-</Tabs>
-
-**总结**     
-如上说的优化，其实就是提供了两个生成器，一个是`creatActionCreator`,一个是`creatReducer`。
-
-其实这些已经有人帮我们写了，并且还打包上传到npm上，我们只需要下载既可以是即可，叫做[redux-actions](https://github.com/redux-utilities/redux-actions)。
-在以前大家都用这个包，来简化redux的使用。不幸的是，作者貌似已经不怎么维护这个库了，而且它还不是官方出的。
-
-幸运的是，faceBook官方已经注意到了这个情况，于是自己在很早之前着手并且现在已经发行了官方的redux辅助工具包，叫做[react-toolkit](https://redux-toolkit.js.org)，里边提供了很多使用的东西，其中就就包括以上两个生成器。

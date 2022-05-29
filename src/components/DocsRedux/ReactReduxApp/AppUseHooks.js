@@ -1,4 +1,4 @@
-import Tips from './compnents/Tips'
+import Tips from './compnents/TipsUseHooks'
 import { useSelector } from 'react-redux'
 
 export default () => {

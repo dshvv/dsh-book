@@ -1,11 +1,9 @@
 import { connect } from "react-redux";
+import { setMsg } from '../store/action-creator'
 
 const Tips = (props) => {
     const btnClick = () => {
-        props.dispatch({
-            type: 'SET_MSG',
-            payload: '李四'
-        });
+        props.dispatch(setMsg('李四'));
     }
     return (
         <button className="Tips" onClick={btnClick}>
