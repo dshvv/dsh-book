@@ -5,19 +5,14 @@ hide_title: true
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
-import store from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/store/index.js";
-import Index from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/index.js";
-import App from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/App.js";
-import HooksApp from "!!raw-loader!/src/components/DocsRedux/ReactReduxHooksApp/App.js";
-import Tips from "!!raw-loader!/src/components/DocsRedux/ReactReduxApp/compnents/Tips.js";
-import HooksTips from "!!raw-loader!/src/components/DocsRedux/ReactReduxHooksApp/compnents/Tips.js";
-
+import actionCreator from "!!raw-loader!/src/components/DocsRedux/ToolkitApp/store/action-creator.js";
+import store from "!!raw-loader!/src/components/DocsRedux/ToolkitApp/store/index.js";
 
 👉[redux-toolkit 官方文档](https://redux-toolkit.js.org) 👈
 
 ## 这是啥
 
-redux-toolkit 号称自己是 Redux 官方工具包，用于高效的 Redux 开发。
+redux-toolkit 是 Redux 官方出的工具包，用于高效的 Redux 开发。
 
 ```shell
 yarn add @reduxjs/toolkit
@@ -25,7 +20,7 @@ yarn add @reduxjs/toolkit
 
 ## chrome 插件支持
 
-原生的写法不支持浏览器使用插件 debug。redux-toolkit 创建的 store 则可以
+原生的写法不支持浏览器使用插件进行跟踪 debug。redux-toolkit 创建的 store 则可以
 ![4.1](/img/redux/4.1.png)
 
 ```jsx title="/src/store/index.jsx"
@@ -49,10 +44,17 @@ const reducer = (state = initialState, action) => {
 // store
 export default configureStore({ reducer });
 ```
+
 ![4.2](/img/redux/4.2.gif)
 
-## 优化编写Reducer
-优化编写Reducer和action
-```  jsx title="/src/store/index.jsx"
-actionCreatorStore
-```
+## 编写 actionCreator
+
+<CodeBlock language="js" title="src/store/action-creator.js">
+  {actionCreator}
+</CodeBlock>
+
+## 编写 reducer
+
+<CodeBlock language="js" title="src/store/index.js">
+  {store}
+</CodeBlock>

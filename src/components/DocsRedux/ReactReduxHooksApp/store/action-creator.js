@@ -1,7 +1,7 @@
  /**
-  * actionCreator，定义一个用于 创建type为SET_MSG 的actioCreator
-  * @param action的type字段
-  * @return actionCreator
+  * 定义一个actioCreator，用于 创建type为SET_MSG 的action,
+  * @param payload为action中的状态属性
+  * @return action
   */
 export const setMsg = (payload) => {
   return {

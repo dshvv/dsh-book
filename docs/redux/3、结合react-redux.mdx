@@ -67,7 +67,7 @@ import TipsUseAcr from "!!raw-loader!/src/components/DocsRedux/ReactReduxHooksAp
 又因为 action 的本质上也就是个包含特殊字段的对象，我们可以定一个函数来生成这个对象，这个函数俗称 action creator。  
 Action creator 的设计是由 Flux 架构来的产物，它是一种辅助用的函数，用来建立 Action 的。
 
-我们提取出一个actionCreator生成器：
+我们提取出一个 action生成器 即actionCreator ：
 <CodeBlock language="js" title="src/store/action-creator.js">
   {actionCreator}
 </CodeBlock>
@@ -84,15 +84,15 @@ Action creator 的设计是由 Flux 架构来的产物，它是一种辅助用�
   </TabItem>
 </Tabs>
 
-甚至我们可以更近一步封装 action
+甚至我们可以更近一步封装 action， 将actionCreator的创建也提取出来
 
 ```javascript title="src/store/redux-helper.js"
 /**
- * actionCreator 的辅助工具,生成一个actionCreator
+ * 生成actionCreator
  * @param action的type字段
  * @return actionCreator
  */
-export const generateActionCreator = (type) => {
+export const creatActionCreator = (type) => {
   const actionCreator = (payload) => {
     return { type, payload };
   };
@@ -103,10 +103,10 @@ export const generateActionCreator = (type) => {
 然后看看使用，是不是变得简洁起来了
 
 ```javascript title="src/store/action-creator.js"
-import { generateActionCreator } from "./redux-helper";
+import { creatActionCreator } from "./redux-helper";
 
-// generateActionCreator 来创建type为SET_MSG 的actionCreator
-export const setMsg = generateActionCreator("SET_MSG");
+// creatActionCreator 来创建type为SET_MSG 的actionCreator
+export const setMsg = creatActionCreator("SET_MSG");
 ```
 
 **优化 reducer**  
@@ -117,11 +117,11 @@ Reducer 是一个函数，它接受当前的 state 和 action，（通过内部�
 
 ```javascript title="src/store/redux-helper.js"
 /**
- * reducer 的辅助工具,生成一个reducer
+ * 生成一个reducer
  * @param handlers修改状态的逻辑函数，initialState为状态初始值
  * @return 返回一个reducer函数
  */
-export const generateReducer = (handlers, initialState) => {
+export const creatReducer = (handlers, initialState) => {
   const reducer = (state = initialState, action) => {
     for (const key in handlers) {
       if (action.type === key) {
@@ -142,7 +142,7 @@ export const generateReducer = (handlers, initialState) => {
 
 ```js title="src/store/index.js"
 import { createStore } from "redux";
-import { createReducerHelper } from "./redux-helper";
+import { creatReducer } from "./redux-helper";
 import { setMsg } from "./action-creator";
 
 // state
@@ -151,7 +151,7 @@ const initialState = {
 };
 
 // reducer
-const reducer = createReducerHelper({
+const reducer = creatReducer({
   [setMsg().type](state, action) {
     return { ...state, ...{ msg: action.payload } };
   },
@@ -171,7 +171,7 @@ export default createStore(reducer);
 </Tabs>
 
 **总结**     
-如上说的优化，其实就是提供了两个生成器，一个是`generateActionCreator`,一个是`generateReducer`。
+如上说的优化，其实就是提供了两个生成器，一个是`creatActionCreator`,一个是`creatReducer`。
 
 其实这些已经有人帮我们写了，并且还打包上传到npm上，我们只需要下载既可以是即可，叫做[redux-actions](https://github.com/redux-utilities/redux-actions)。
 在以前大家都用这个包，来简化redux的使用。不幸的是，作者貌似已经不怎么维护这个库了，而且它还不是官方出的。
