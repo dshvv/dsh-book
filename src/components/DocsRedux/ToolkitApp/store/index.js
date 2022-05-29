@@ -9,7 +9,7 @@ const initialState = {
 // reducer
 const reducer = createReducer(initialState, (builder) => {
   builder
-    .addCase({ type: setMsg().type }, (state, action) => {
+    .addCase(setMsg, (state, action) => {
       state.msg = action.payload;
     })
 })
