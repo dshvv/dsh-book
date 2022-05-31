@@ -92,13 +92,13 @@ Reducer 是一个函数，它接受当前的 state 和 action，（通过内部�
  */
 export const creatReducer = (handlers, initialState) => {
   const reducer = (state = initialState, action) => {
+    let finallyState = initialState;
     for (const key in handlers) {
       if (action.type === key) {
-        return handlers[key](state, action);
-      } else {
-        return initialState;
+        finallyState = handlers[key](state, action);
       }
     }
+    return finallyState;
   };
   return reducer;
 };
