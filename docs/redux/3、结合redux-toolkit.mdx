@@ -19,7 +19,7 @@ yarn add @reduxjs/toolkit
 ## chrome 插件支持
 
 原生的写法不支持浏览器使用插件进行跟踪 debug。redux-toolkit 创建的 store 则可以
-![4.1](/img/redux/4.1.png)
+![3.1](/img/redux/3.1.png)
 
 ```jsx title="/src/store/index.jsx"
 import { configureStore } from "@reduxjs/toolkit";
@@ -43,7 +43,7 @@ const reducer = (state = initialState, action) => {
 export default configureStore({ reducer });
 ```
 
-![4.2](/img/redux/4.2.gif)
+![3.2](/img/redux/3.2.gif)
 
 ## 编写 action creator
 
