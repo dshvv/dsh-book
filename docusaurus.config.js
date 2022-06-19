@@ -4,16 +4,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '丁少华的个人网站',
-  tagline: '这个网站很酷啊，赶紧收藏吧！',
-  url: 'https://your-docusaurus-test-site.com',
+  title: '丁少华',
+  url: 'https://dingshaohua.com', // seo
   // baseUrl: '/',
   baseUrl: '/dsh-book/build/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'facebook', // github pages自动部署用到.
+  projectName: 'docusaurus', // github pages自动部署用到.
   i18n: {
     defaultLocale: 'zh',
     locales: ['zh'],
@@ -36,6 +35,7 @@ const config = {
   ],
 
   plugins: [
+    ['docusaurus-plugin-sass',{}],
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -51,7 +51,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: '丁少华的个人网站',
+        title: '丁少华',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
