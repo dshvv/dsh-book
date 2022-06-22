@@ -15,16 +15,16 @@ export default function Home(): JSX.Element {
       <main>
         <div className={styles.HomeMain}>
           <div className={styles.bg}>
-            <img className={styles.fmBoy} src={require('@site/static/img/home/fm-boy.png').default} />
+            <video className={styles.fmBoy} src={require('@site/static/img/home/home-bg.mp4').default} loop muted autoPlay/>
           </div>
           <div className={styles.content}>
-            <div>
+            <div className={styles.box}>
               <div className={styles.img}><img src={require('@site/static/img/home/logo.gif').default} /></div>
               <div className={styles.btn}>
                 <Link
                   className="button button--secondary button--lg"
                   to="redux/1、初识">
-                  开始探索 - 😍
+                  开始探索
                 </Link>
                 {/* <button onClick={start}>开始阅读</button> */}
               </div>
