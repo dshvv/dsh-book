@@ -3,6 +3,10 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import styles from './index.module.scss';
 import Link from '@docusaurus/Link';
+import {getPlatform} from '../utils'
+
+const {isPc} = getPlatform();
+const bgVideo = isPc?require('@site/static/img/home/home-bg.mp4').default:require('@site/static/img/home/home-bg-h5.mp4').default
 
 
 
@@ -15,7 +19,7 @@ export default function Home(): JSX.Element {
       <main>
         <div className={styles.HomeMain}>
           <div className={styles.bg}>
-            <video className={styles.fmBoy} src={require('@site/static/img/home/home-bg.mp4').default} loop muted autoPlay/>
+            <video className={styles.fmBoy} src={bgVideo} loop muted autoPlay/>
           </div>
           <div className={styles.content}>
             <div className={styles.box}>

@@ -20,9 +20,12 @@ const config = {
   presets: [
     [
       'classic',
+       // @ts-ignore
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+         
+          remarkPlugins: [require('mdx-mermaid')],
           sidebarPath: require.resolve('./sidebars.js'),
           path: 'docs/redux',
           routeBasePath: 'redux',
@@ -39,9 +42,18 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'life',
+        id: 'life-module',
         path: 'docs/life',
         routeBasePath: 'life',
+        sidebarPath: require.resolve('./sidebars.js')
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'teach-module',
+        path: 'docs/teach',
+        routeBasePath: 'teach',
         sidebarPath: require.resolve('./sidebars.js')
       },
     ],
@@ -63,10 +75,16 @@ const config = {
             label: 'redux',
           },
           {
-            docsPluginId:'life',
+            docsPluginId:'life-module',
             type: 'doc',
             docId: '认识我',
             label: '碎碎念',
+          },
+          {
+            docsPluginId:'teach-module',
+            type: 'doc',
+            docId: '1、前言',
+            label: '前端学习',
           }
         ],
       },
