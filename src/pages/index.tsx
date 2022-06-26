@@ -16,8 +16,8 @@ export default function Home(): JSX.Element {
     <BrowserOnly>
       {() => {
         const { isPc } = getPlatform();
-        const bgVideo = isPc?require('@site/static/img/home/home-bg.mp4').default:require('@site/static/img/home/home-bg-h5.mp4').default
-       return <Layout>
+        const bgVideo = require(`@site/static/img/home/home-bg${isPc?'':'-h5'}.mp4`).default;
+        return <Layout>
           <main>
             <div className={styles.HomeMain}>
               <div className={styles.bg}>

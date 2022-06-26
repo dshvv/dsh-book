@@ -47,15 +47,15 @@ const config = {
         sidebarPath: require.resolve('./sidebars.js')
       },
     ],
-    // [
-    //   '@docusaurus/plugin-content-docs',
-    //   {
-    //     id: 'teach-module',
-    //     path: 'docs/teach',
-    //     routeBasePath: 'teach',
-    //     sidebarPath: require.resolve('./sidebars.js')
-    //   },
-    // ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'teach-module',
+        path: 'docs/teach',
+        routeBasePath: 'teach',
+        sidebarPath: require.resolve('./sidebars.js')
+      },
+    ],
   ],
 
   themeConfig:
@@ -79,12 +79,12 @@ const config = {
             docId: '认识我',
             label: '碎碎念',
           },
-          // {
-          //   docsPluginId:'teach-module',
-          //   type: 'doc',
-          //   docId: '1、前言',
-          //   label: '前端学习',
-          // }
+          {
+            docsPluginId:'teach-module',
+            type: 'doc',
+            docId: '1、前言',
+            label: '前端学习',
+          }
         ],
       },
       prism: {
