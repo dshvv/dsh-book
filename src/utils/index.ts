@@ -1,5 +1,5 @@
 export const getPlatform = () => {
-    const ua = navigator.userAgent,
+    const ua = window.navigator.userAgent,
         isWindowsPhone = /(?:Windows Phone)/.test(ua),
         isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
         isAndroid = /(?:Android)/.test(ua),
