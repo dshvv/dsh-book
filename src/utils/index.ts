@@ -16,3 +16,24 @@ export const getPlatform = () => {
         isPc: isPc
     };
 }
+
+export const evalScripts = (text) => {
+    var script, scripts;
+    scripts = [];
+    var regexp = /<script[^>]*>([\s\S]*?)<\/script>/gi;
+    while ((script = regexp.exec(text))) scripts.push(script[1]);
+    scripts = scripts.join('\n');
+    // @ts-ignore
+    if (scripts) (window.execScript) ? window.execScript(scripts) : window.setTimeout(scripts, 0);
+
+
+    // 这个是我写的
+    // const scripts = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi.exec(htmlStr);
+    // if (scripts) {
+    //     const [script] = scripts;
+    //     const scriptContent = script.replace(/<\/?script[^>]*>/ig, "");
+    //     evalScripts(script)
+    //     eval(scriptContent);
+    // }
+}
+
