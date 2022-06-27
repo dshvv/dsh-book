@@ -82,7 +82,7 @@ const config = {
           {
             docsPluginId:'teach-module',
             type: 'doc',
-            docId: '1、前言',
+            docId: '第1章_前言',
             label: '前端学习',
           }
         ],
