@@ -51,7 +51,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'teach-module',
-        path: 'docs/teach',
+        path: 'docs/fe-teach',
         routeBasePath: 'teach',
         sidebarPath: require.resolve('./sidebars.js')
       },
@@ -69,6 +69,12 @@ const config = {
         },
         items: [
           {
+            docsPluginId:'teach-module',
+            type: 'doc',
+            docId: '第1章_前言',
+            label: '前端学习',
+          },
+          {
             type: 'doc',
             docId: '1、初识',
             label: 'redux',
@@ -78,12 +84,6 @@ const config = {
             type: 'doc',
             docId: '认识我',
             label: '碎碎念',
-          },
-          {
-            docsPluginId:'teach-module',
-            type: 'doc',
-            docId: '第1章_前言',
-            label: '前端学习',
           }
         ],
       },
