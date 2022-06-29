@@ -28,12 +28,41 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+
+.code-error {
+  background-color: #ff000020;
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  border-left: 3px solid #ff000080;
+}
+
+.code-sucess {
+  background-color: rgb(0 164 0 / 15%);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  border-left: 3px solid rgb(0 148 0);
+}
+
+.code-warn {
+  background-color: rgb(255 186 0 / 15%);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+  border-left: 3px solid #e6a700;
+}
+
+
+
 .container {
   h2 {
     border-bottom: 1px solid #eaecef;
     padding-bottom: 6px;
     font-size: 2rem !important;
   }
+
   // img {
   //   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
   // }
