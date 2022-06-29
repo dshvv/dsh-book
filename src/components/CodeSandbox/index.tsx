@@ -24,7 +24,7 @@ const CodeSandbox = (props) => {
         </TabItem>
 
         <TabItem value="code" label="代码">
-          <CodeBlock language="html" title="index.html">
+          <CodeBlock language="html">
             {html}
           </CodeBlock>
         </TabItem>

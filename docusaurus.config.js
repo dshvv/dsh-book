@@ -50,9 +50,9 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'teach-module',
+        id: 'fe-teach-module',
         path: 'docs/fe-teach',
-        routeBasePath: 'teach',
+        routeBasePath: 'fe-teach',
         sidebarPath: require.resolve('./sidebars.js')
       },
     ],
@@ -69,7 +69,7 @@ const config = {
         },
         items: [
           {
-            docsPluginId:'teach-module',
+            docsPluginId:'fe-teach-module',
             type: 'doc',
             docId: '第1章_前言',
             label: '前端学习',
