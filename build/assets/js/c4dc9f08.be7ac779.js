@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdsh_book=self.webpackChunkdsh_book||[]).push([[431],{7604:function(s){s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"life-module"}')}}]);
