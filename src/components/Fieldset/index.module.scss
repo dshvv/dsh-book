@@ -1,0 +1,16 @@
+.Fieldset {
+    margin: 10px 0;
+    background-color: rgb(246 248 250);
+    border-radius: 8px;
+    .title{
+        border-bottom: 1px solid #dcdddecc;
+        padding: 10px;
+        color: blue;
+    }
+    .content{
+        padding: 10px;
+    }
+    p{
+        margin: 0;
+    }
+}

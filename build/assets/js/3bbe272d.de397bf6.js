@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdsh_book=self.webpackChunkdsh_book||[]).push([[915],{8748:function(e){e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"fe-teach-module"}')}}]);
