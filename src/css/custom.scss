@@ -63,9 +63,9 @@
     font-size: 2rem !important;
   }
 
-  // img {
-  //   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-  // }
+  @mixin bs {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  }
 
   img[alt="1.2"] {
     width: 400px;
@@ -83,13 +83,33 @@
     width: 100px;
   }
 
-  img[alt="teach-1.1"] {
+  img[alt="fe-teach-1.1"] {
     width: 20%;
   }
 
-  img[alt="teach-1.2"] {
+  img[alt="fe-teach-1.2"] {
     width: 70%;
   }
+
+  img[alt="fe-teach-1.2"] {
+    width: 70%;
+  }
+
+  img[alt="fe-teach-7.1"] {
+    @include bs;
+    width: 100px;
+  }
+
+  img[alt="fe-teach-7.2"] {
+    @include bs;
+    width: 300px;
+  }
+
+  img[alt="fe-teach-7.3"] {
+    @include bs;
+    width: 100px;
+  }
+  
 }
 
 // .navbar__logo{
