@@ -95,19 +95,28 @@
     width: 70%;
   }
 
-  img[alt="fe-teach-7.1"] {
+  img[alt="fe-teach-6.1"] {
     @include bs;
     width: 100px;
   }
 
-  img[alt="fe-teach-7.2"] {
+  img[alt="fe-teach-6.2"] {
     @include bs;
     width: 300px;
   }
 
-  img[alt="fe-teach-7.3"] {
+  img[alt="fe-teach-6.3"] {
     @include bs;
     width: 100px;
+  }
+  
+  img[alt="fe-teach-7.2"] {
+    @include bs;
+    width: 400px;
+  }
+
+  img[alt="fe-teach-7.3"], img[alt="fe-teach-7.4"] {
+    @include bs;
   }
   
 }
