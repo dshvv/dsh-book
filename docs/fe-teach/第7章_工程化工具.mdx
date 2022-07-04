@@ -5,6 +5,9 @@ title: 第7章 工程化工具
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import WebpackBuildMain from "!!raw-loader!/src/components/DocsFeTeach/WebpackBuild/main.js";
+import WebpackBuilUtils from "!!raw-loader!/src/components/DocsFeTeach/WebpackBuild/utils_js.js";
+import CodeBlock from "@theme/CodeBlock";
 
 随着前端越发复杂，工程化的需求也日益紧迫。
 
@@ -12,26 +15,27 @@ import TabItem from "@theme/TabItem";
 
 ## babel
 
-babel 是语法编译工具， 它能将新版 js 编写的代码转换为向后兼容的 js 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。
+语法编译工具， 它能将新版 js 编写的代码转换为向后兼容的 js 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。
 
 ```js
 const i = 123;
 ```
 
-如上代码 在古老的 ie8 浏览器上会报错 不识别！  
+如上代码 在古老的 ie8 上会报错“不识别” ！  
 ![fe-teach-7.1](/img/fe-teach/7.1.png)
 
 那如何让老浏览器兼容这种情况呢？  
-我们来使用 babel 转译！ 可以看到右侧编译过后的代码就可以被 ie 识别的  
+我们来使用 babel 转译！  
+可以看到右侧编译过后的代码就可以被 ie 识别的  
 ![fe-teach-7.2](/img/fe-teach/7.2.jpg)
 
 [官网教程](https://www.babeljs.cn)这里有更具体的用法。
 
 ## webpack
 
-因为目前浏览器尚不能友好支持模块。
-如下代码，在浏览器中执行是会报错的。  
-浏览器并不能识别模块化语法，如 import export。  
+[模块化技术](https://www.cnblogs.com/dingshaohua/p/8371018.html)是 2017 才在前端中兴起。  
+截至 2021 浏览器尚不能友好支持模块，不能识别模块化语法，如 import export。
+
 如下代码，浏览器上会报错。
 
 <Tabs>
@@ -62,6 +66,7 @@ export default {
   },
 };
 ```
+
 </TabItem>
 
 </Tabs>
@@ -70,16 +75,17 @@ export default {
 
 👇👇🌹🌺🌻🌼🌸💐👇👇
 
-这个时候，webpack 就该上场了。
-webpack 是 js 代码中的模块处理的工具。
-它将根据模块的依赖关系进行分析，然后生成对应的静态资源。
-如上代码，对其打包处理模块化代码即可：
+于是，webpack 上场了。  
+webpack 是 js 模块处理的工具、模块打包器。  
+它根据模块的依赖关系进行分析，然后生成对应的静态资源。
+
+如上代码，用 webpack 处理 浏览器即可识别：
 
 ```shell
 webpack ./index.js --mode=development
 ```
 
-处理完成后，会在项目的根目录下生成`dist/main.js`文件。
+之后，会在项目根目录下生成`dist/main.js`。  
 index.html 引入这个文件即可正常使用
 
 ```html title="index.html"
@@ -88,6 +94,144 @@ index.html 引入这个文件即可正常使用
 ```
 
 ![fe-teach-7.4](/img/fe-teach/7.4.jpg)
+
+[官网教程](https://webpack.docschina.org)这里有更具体的用法。
+
+## rollup
+
+和 webpack 功能一样，webpack 的竞品。
+
+和 webpack 的区别在于：  
+1、它小巧，webpack 可结合插件可以完成前端工程化的绝大多数工作，而 Rollup 仅仅是一款 ESM 打包器，没有其它功能。  
+2、它利用 ESM 支撑，非 webpack 特殊处理。  
+3、它不支持模块的 HMR 热更新。
+
+所以它们是有不同的应用场景：
+对于应用使用 webpack，对于类库使用 Rollup
+
+拿上面 webpack 那个例子，  
+改为 rollup 编译
+
+```shell
+# rollup 入口文件 --file 输出文件
+rollup ./index.js --file bundle.js
+```
+
+### webpack 处理分包
+
+不分包的情况下，两者趋于一致。  
+分包则能体现与 webpack 的差别。
+这是源码
+
+<Tabs>
+<TabItem value="index.html" label="index.html" default>
+
+```html
+<button>1+2=?</button>
+<script src="./index.js"></script>
+```
+
+</TabItem>
+<TabItem value="index.js" label="index.js">
+
+```js title="index.js"
+const onClick = async () => {
+  const { default: utils } = await import("./utils");
+  const res = utils.add(1, 2);
+  console.log(res);
+};
+document.querySelector("button").onclick = onClick;
+```
+
+</TabItem>
+<TabItem value="utils.js" label="utils.js">
+
+```js title="utils.js"
+export default {
+  add(x, y) {
+    return x + y;
+  },
+};
+```
+
+</TabItem>
+
+</Tabs>
+
+不出意外的话，一般浏览器是肯定不能识别的。  
+接下来我们用 webpack 打包。
+
+<Tabs>
+  <TabItem value="dist/main.js" label="dist/main.js">
+    <CodeBlock language="js" title="dist/main.js">
+      {WebpackBuildMain}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="dist/utils_js.js" label="dist/utils_js.js">
+    <CodeBlock language="js" title="dist/utils_js.js">
+      {WebpackBuilUtils}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+
+然后页面引入打包后的文件即可
+
+```html
+<button>1+2=?</button>
+<script src="./dist/main.js"></script>
+```
+
+可以看到 webpack 对分包的处理，特别的复杂！   
+完全自己实现了一套模块化处理机制。
+
+### rollup 处理分包
+
+我们用 rollup 处理包含分包的代码  
+处理分包的时候，打包命令要稍微调整一下
+
+```shell
+# rollup 入口文件    -d 输出目录
+  rollup .\index.js  -d dist
+```
+
+来看看打包后的内容
+
+<Tabs>
+<TabItem value="build/index.js" label="build/index.js">
+
+```js title="build/index.js"
+const onClick = async () => {
+  const { default: utils } = await import("./utils-5c8046dd.js");
+  const res = utils.add(1, 2);
+  console.log(res);
+};
+document.querySelector("button").onclick = onClick;
+```
+
+</TabItem>
+<TabItem value="build/utils-5c8046dd.js" label="build/utils-5c8046dd.js">
+
+```js title="build/utils-5c8046dd.js"
+var utils = {
+  add(x, y) {
+    return x + y;
+  }
+};
+export { utils as default };
+```
+
+</TabItem>
+</Tabs>
+
+然后页面引入打包后的文件即可
+
+```html
+<button>1+2=?</button>
+<script src="./build/index.js"></script>
+```
+
+可以看到，打包后的代码极为简单，几乎和源码没什么区别。
+但是这依赖于浏览器本身对模块化的支持，截至2022年 只有chrome可以支持。
 
 <!-- 前端工程化工具总结和对比
 包管理工具
