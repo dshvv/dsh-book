@@ -1,0 +1,194 @@
+---
+hide_title: true
+title: 第6章 框架
+---
+import Fieldset from "/src/components/Fieldset";
+
+从我 2015 年入行前端一职， 经历了写过原生的三剑客 HTML/CSS/Javascript 到 jQuery 搞定一切的年代。
+
+曾经前端大多数代表着切图、拼接 JSP/PHP 模板，重页面样式而轻逻辑，工作大多数用来调节浏览器兼容。
+
+**可这短短几年，前端竟然经历了如此多的巨变！**
+<span style={{fontSize: 40}}>😂</span>
+
+前端版技术更迭如此之快，js 的版本一再升级、以及 html5、css3 的迅猛出现都让前端领域焕发着强大的生命力！
+
+前端的框架也在这个时候开始兴起，angular 最新诞生， vue 和 react 也紧随其后！
+
+## vue
+![fe-6.1](/img/fe/6.1.jpg)   
+由 尤雨溪 个人发明。  
+因为是国人开发的所以文档都是中文。  
+这也是国内开发者大都选择它的原因。
+
+对比原生页面学法的优点有很多：  
+1.模板语法，再也不用拼接 Dom 了。  
+2.双向绑定，无需开发关注数据和模板的关联。  
+3.模块化开发，组件和逻辑代码复用。  
+....
+
+我们写一个需求 Demo 对比下，  
+我们请求一个接口，接口返回学生列表。  
+并支持搜索，要求按照性别加上头像。   
+![fe-6.2](/img/fe/6.2.jpg)
+
+```js title="api.js"
+/**
+ * 模拟学生列表接口
+ **/
+const getStudents = (search) => {
+  const data = [
+    { id: 1, name: "张三", sex: "男", class: "三年级1班" },
+    { id: 2, name: "李四", sex: "男", class: "三年级2班" },
+    { id: 3, name: "张三", sex: "男", class: "三年级2班" },
+    { id: 4, name: "小红", sex: "女", class: "三年级1班" },
+  ];
+  return search ? data.filter((item) => item.name === search && item) : data;
+};
+```
+
+先看看传统原生的三剑客写法
+
+```html title="index.html"
+<div class="wrapp">
+  <input type="search" placeholder="请输入姓名搜索" />
+  <button onclick="syncStudents()">搜索</button>
+  <div class="list"></div>
+</div>
+<script src="./api.js"></script>
+<script>
+  /**
+   * 同步学生列表到页面
+   **/
+  const syncStudents = () => {
+    const search = document.querySelector("input").value;
+    const students = getStudents(search);
+    let htmlStr = "";
+    students.forEach((item) => {
+      htmlStr += `<div class="student">
+            ${item.id} ${item.name} ${item.class}
+          </div>`;
+    });
+    document.querySelector(".list").innerHTML = htmlStr;
+  };
+
+  syncStudents();
+</script>
+```
+
+再来看看用 vue 的写法
+
+```html title="index.vue"
+<template>
+  <div class="wrapp">
+    <input type="search" v-model="search" placeholder="请输入姓名搜索" />
+    <button @click="syncStudents">搜索</button>
+    <div class="list">
+      <template v-for="item in students" :key="item.id">
+        <div class="student">
+          <template v-if="item.sex === '男'">🤷‍♂️</template>
+          <template v-else>🤷‍♀️</template>
+          {{ item.id }} {{ item.name }} {{ item.class }}
+        </div>
+      </template>
+    </div>
+  </div>
+</template>
+
+<script setup>
+  import { getStudents } from "./api";
+  import { ref } from "vue";
+
+  // 定义学生列表 状态
+  const students = ref([]);
+
+  // 定义搜索 状态
+  const search = ref();
+
+  /**
+   * 同步学生列表到页面
+   **/
+  const syncStudents = () => {
+    const res = getStudents(search.value);
+    students.ref = res;
+  };
+
+  syncStudents();
+</script>
+```
+
+## react
+![fe-6.3](/img/fe/6.3.jpg)    
+react 是 facebook 出品的一个前端框架。  
+全球使用人说居多，尤其是国外！
+
+同样，它也是看到了原生的缺点，顺势而出的。
+
+在写法和底层原理上和 vue 有些区别。  
+vue 则是固定的写法，一个组件就是一个 vue 文件，内部包含模板、样式、js。    
+而 react 是函数式编程，一个组件即是一个函数，可随意组装，比较灵活，也更加考验原生js的能力。  
+
+
+```js title="index.jsx"
+import { getStudents } from "./api";
+import { useEffect, useState } from "react";
+
+export default () => {
+  useEffect(() => {
+    syncStudents();
+  }, []);
+
+  // 定义学生列表 状态
+  const [students, setStudents] = useState([]);
+
+  /**
+   * 同步学生列表到页面
+   **/
+  const syncStudents = () => {
+    const res = getStudents();
+    setStudents(res);
+  };
+
+  return (
+    <div class="wrapp">
+      <input type="search" placeholder="请输入姓名搜索" />
+      <button onClick={syncStudents}>搜索</button>
+      <div class="list">
+        {students.map((item) => (
+          <div class="student" key={item.id}>
+            {item.sex === "男" ? "🤷‍♂️" : "🤷‍♀️"}
+            {item.id} {item.name} {item.class}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+```
+
+:::tip 提示
+3大框架最明显的好处是: 解放双手，再也不用操作Dom了，靠数据驱动视图，将重点放在代码和业务本身上。 
+
+angular的难度最大，而且现在大家几乎都不用了，所以弃学吧
+:::
+
+## 教程
+<Fieldset title="🦜vue">
+
+--电子书--  
+ 
+[深入理解Vue.js实战](https://godbasin.github.io/vue-ebook)    
+[jc2182 vue教程](https://www.jc2182.com/vuejs/vuejs-jiaocheng.html)   
+[vue官方文档](https://v3.cn.vuejs.org)
+
+
+</Fieldset>
+
+<Fieldset title="🦜react">
+
+--电子书--  
+[jc2182 react教程](https://www.jc2182.com/react/react-jiaocheng.html)  
+[react官方文档](https://react.docschina.org)
+
+
+</Fieldset>

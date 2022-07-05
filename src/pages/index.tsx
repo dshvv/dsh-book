@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
                   <div className={styles.btn}>
                     <Link
                       className="button button--secondary button--lg"
-                      to="fe-teach/第1章_前言">
+                      to="fe/第1章_前言">
                       开始探索
                     </Link>
                     {/* <button onClick={start}>开始阅读</button> */}

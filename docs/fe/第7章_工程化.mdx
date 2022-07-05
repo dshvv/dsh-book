@@ -1,0 +1,216 @@
+---
+hide_title: true
+title: 第7章 工程化
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import WebpackBuildMain from "!!raw-loader!/src/components/DocsFeTeach/WebpackBuild/main.js";
+import WebpackBuilUtils from "!!raw-loader!/src/components/DocsFeTeach/WebpackBuild/utils_js.js";
+import CodeBlock from "@theme/CodeBlock";
+
+## 什么是前端工程化
+
+![fe-7.0](/img/fe/7.0.jpg)
+
+随着 Web 业务日益复杂化和多元化，前端开发已经由以 WebPage 模式为主转变为以 WebApp 模式为主了。
+
+现在随便找个前端项目，都已经不是过去的拼个页面+搞几个 jQuery 插件就能完成的了。
+
+项目复杂了就会产生许多问题，如何进行高效的多人协作？如何保证项目的可维护性？如何提高项目的开发质量？
+...
+
+于是便有了 提升开发体验、效率和质量，提升应用的访问性能等手段（工具和技术）。
+
+这就是前端工程化！
+
+参考：
+https://www.cnblogs.com/onebox/p/9570518.html
+https://zhuanlan.zhihu.com/p/374753110
+
+
+
+<!-- 
+前端工程化大概有几个知识点：  
+1、组件化、模块化  
+2、规范化  
+3、自动化
+
+下边我将常用的工程化工具和技术一一列出。 -->
+## 脚手架
+在学习框架的时候，其实已经用到了脚手架。        
+脚手架就是指通过选择几个选项快速搭建项目基础代码的工具。   
+脚手架创建的项目 会帮助你自动继承了很多工程化所需的内容。
+
+虽然方便了，但是这并不利于学习底层知识，如果想学习工程化，就不能完全依赖它！
+
+## babel
+
+语法编译工具，更多请看[官网教程](https://www.babeljs.cn)。  
+它能将新版 js 编写的代码转换为向后兼容的 js 语法，以便运行在旧浏览器或其他环境中。
+
+```js
+const i = 123;
+```
+
+如上代码 在古老的 ie8 上直接使用就会报错“不识别” ，通过 babel 处理后的代码则明显可以兼容旧浏览器
+
+<Tabs>
+<TabItem value="直接使用" label="直接使用" default>
+
+![fe-7.1](/img/fe/7.1.png)
+
+</TabItem>
+<TabItem value="babel处理" label="babel处理" >
+
+![fe-7.2](/img/fe/7.2.jpg)
+
+</TabItem>
+</Tabs>
+
+## webpack
+
+模块打包器，更多请看[官网教程](https://webpack.docschina.org)。  
+[模块化技术](https://www.cnblogs.com/dingshaohua/p/8371018.html) 2015 年 在前端兴起。  
+使用此技术，可以让代码变整洁、清晰。
+
+<Tabs>
+<TabItem value="index.html" label="index.html" default>
+
+```html
+<button>1+2=?</button>
+<script src="./index.js"></script>
+```
+
+</TabItem>
+<TabItem value="index.js" label="index.js">
+
+```js
+const btn = document.querySelector("button");
+
+btn.onclick = async () => {
+  const { add } = await import("./utils.js");
+  const res = add(1, 2);
+  console.log(res);
+};
+```
+
+</TabItem>
+<TabItem value="utils.js" label="utils.js">
+
+```js
+export const add = (x, y) => {
+  return x + y;
+};
+```
+
+</TabItem>
+
+</Tabs>
+
+😒😒😒😒😒😒😒😒😒😒  
+不过，截至到 2022 年，  
+也就最新的 chrome 实现了对模块化的支持。  
+其它浏览器均会无法识别。  
+![fe-7.3](/img/fe/7.3.jpg)
+
+👇👇🌹🌺🌻🌼🌸💐👇👇  
+于是，webpack 上场了。
+
+> 引用官方的话：webpack 是 js 模块处理的工具、模块打包器。它根据模块的依赖关系进行分析，然后生成对应的静态资源。
+
+如上代码，用 webpack 处理：
+
+```shell
+webpack ./index.js --mode=development
+```
+
+命令执行完成后，会在项目根目录下生成`dist`目录，这里边就是其处理好的 js 文件。最后 `index.html` 里引入即可。
+
+<Tabs>
+<TabItem value="index.html" label="index.html" default>
+
+```html title="index.html"
+<button>1+2=?</button>
+<script src="./dist/main.js"></script>
+```
+
+</TabItem>
+ <TabItem value="main.js" label="main.js">
+    <CodeBlock language="js" title="dist/main.js">
+      {WebpackBuildMain}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="utils_js.js" label="utils_js.js">
+    <CodeBlock language="js" title="dist/utils_js.js">
+      {WebpackBuilUtils}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+
+可以看到 webpack 对分包的处理，特别的复杂,
+完全自己实现了一套模块化处理机制方案，来兼容个大浏览器。
+
+## rollup
+
+模块打包器，更多请看[官网教程](https://www.rollupjs.com)。  
+和 webpack 功能基本一样，是其竞品。不过和 webpack 的区别在于：  
+1、它小巧，仅是款 ESM 打包器，无其它功能。  
+2、它利用 ESM 支撑，非 webpack 特殊处理。  
+3、它不支持模块的 HMR 热更新。
+
+拿上面 webpack 那个例子，改为 rollup 编译
+
+```shell
+# rollup 入口文件    -d 输出目录
+  rollup .\index.js  -d dist
+```
+
+命令执行完成后，会在项目根目录下生成`build`目录，这里边就是其处理好的 js 文件。最后 `index.html` 里引入即可。
+
+<Tabs>
+<TabItem value="index.html" label="index.html">
+
+```html title="index.html"
+<button>1+2=?</button>
+<script src="./build/index.js"></script>
+```
+
+</TabItem>
+<TabItem value="index.js" label="index.js">
+
+```js title="build/index.js"
+const btn = document.querySelector("button");
+
+btn.onclick = async () => {
+  const { add } = await import("./utils-123.js");
+  const res = add(1, 2);
+  console.log(res);
+};
+```
+
+</TabItem>
+<TabItem value="utils-5c8046dd.js" label="utils-123.js">
+
+```js title="build/utils-123.js"
+const add = (x, y) => {
+  return x + y;
+};
+
+export { add };
+```
+
+</TabItem>
+</Tabs>
+
+可以看到，打包后的代码和源码没什么区别。  
+代码的执行仍依赖于浏览器本身对模块化的支持，所以我觉得它处理了个寂寞 😂。
+
+📣 得出结论，webpack 和 babel 应用场景不同：
+应用开发用 前者，类库的开发则用 后者
+
+<!-- 前端工程化工具总结和对比
+包管理工具
+经过验证、较稳定的构建工具
+较新的构建工具
+自动化构建工具 -->
