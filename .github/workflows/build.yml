@@ -9,3 +9,6 @@ jobs: # workflow 文件的主体，表示要执行的一项或多项任务
     runs-on: ubuntu-latest # 指定运行所需要的虚拟机环境 ubuntu、windows、macOS。
     steps: # 指定每个 Job 的运行步骤，可以包含一个或多个步骤。
       - uses: actions/checkout@v3 # 拉取 github 仓库代码（action）
+      - name: Install and Build 🔧 # 该步奏的名称
+          run: | # 该步骤运行的命令或者 action
+            ll
