@@ -6,8 +6,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "丁少华",
   url: "https://dingshaohua.com", // seo
-  // baseUrl: '/',
-  baseUrl: "/dsh-book/build/",
+  baseUrl: '/',
+  // baseUrl: "/dsh-book/build/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
