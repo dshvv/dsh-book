@@ -11,7 +11,7 @@ const CodeSandbox = (props) => {
   const [html, setHtml] = useState();
 
   useEffect(async () => {
-    const htmlStr = (await import(`!!raw-loader!/src/components/DocsTeach/${props.file}.html`)).default;
+    const htmlStr = (await import(`!!raw-loader!/src/components${props.file}.html`)).default;
     setHtml(htmlStr);
     evalScripts(htmlStr)
   }, []);

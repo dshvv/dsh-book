@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdsh_book=self.webpackChunkdsh_book||[]).push([[707],{707:function(n,c,t){t.r(c),c.default='<button onclick="onClickEvent_DocsTeach_3_3()">\u6309\u94ae</button>\r\n<script>\r\n    const onClickEvent_DocsTeach_3_3 = () => {\r\n        alert("\u6309\u94ae\u88ab\u70b9\u51fb");\r\n    };\r\n<\/script>'}}]);

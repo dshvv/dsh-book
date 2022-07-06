@@ -1,0 +1,86 @@
+---
+title: 第2章 基础
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import CodeSandbox from "/src/components/CodeSandbox";
+import Fieldset from "/src/components/Fieldset";
+
+网页由 3 个部分构成，分别是 html、css、js。    
+其中 html+css 来构成网页的布局，而 js 是沟通用户和浏览器交互的桥梁。   
+我们将其称为`三剑客`。    
+它们是前端开发者的基础、立命之本！     
+强烈建议把它们学熟之后，再学后边的知识！
+<Mermaid
+  chart={`graph TB;
+    前端-->Html;
+    前端-->Css;
+    前端-->JavaScript;
+`}
+/>   
+
+
+## 布局 ( html+css )
+
+编写网页，就像你绘画一样，  
+其中 html 就是你用画笔素描基本的轮廓。  
+而 css 就是你给素描上色修饰填充。
+
+我们来写一个 html 如下： div 相当于画出的一个盒子，里边的内容是 “你好，世界”
+
+<CodeSandbox  file="/DocsFe/HtmlCss/2-1" />
+
+我们用 css 给盒子添些样式: 将盒内字体颜色设为蓝色，盒子的背景设置成粉红色
+
+<CodeSandbox file="/DocsFe/HtmlCss/2-2" />
+
+其实，不管是多复杂的页面 都可以利用 html+css 完成整个页面的布局（画出来）！
+
+## 交互 ( javaScript )
+
+截至目前，我们写的页面还只是纯静态的，尚不能和浏览器以及页面进行交互。
+
+而通过 js 我们则可以跟页面实现动态交互。
+
+页面上有一个按钮，点一下，你就能看到交互
+
+<CodeSandbox file="/DocsFe/HtmlCss/2-3" />
+
+## 教程
+
+目前没有自己做详细教程的想法，而且网上的资源已经很丰富了，所以我从网上找了一些自认为还不错的教程推荐大家！
+
+<Fieldset title="🦜html+css+js">
+
+--视频--  
+[Web 前端入门](https://www.bilibili.com/cheese/play/ep7585)若买不起正版可来看[盗版](https://www.aliyundrive.com/s/ypVYReHkhCE)的  
+[千锋 web 前端开发项目教程](https://www.bilibili.com/video/BV17z4y1D7Yj)
+
+</Fieldset>
+
+<Fieldset title="🦜html、css">
+
+--电子书--  
+[html--> 阮一峰 HTML 语言教程](https://www.bookstack.cn/read/html-tutorial)  
+[html-->《C 语言中文网》HTML 入门教程](http://c.biancheng.net/html)  
+[html-->《菜鸟教程》HTML 教程](https://www.runoob.com/html)  
+[html-->《w3school》HTML 教程](https://www.w3school.com.cn/html/index.asp)
+
+[css-->《菜鸟教程》CSS 教程](https://www.runoob.com/css)  
+[css-->《w3school》CSS 教程](https://www.w3school.com.cn/css/index.asp)
+
+--视频--  
+[5 分钟学会 HTML 网页制作](https://www.bilibili.com/video/BV14V411Z7Bo)
+
+</Fieldset>
+
+<Fieldset title="🦜javaScript">
+
+--电子书--  
+[阮一峰 JavaScript 标准参考教程](http://javascript.ruanyifeng.com)  
+[廖雪峰 JavaScript 教程](https://www.liaoxuefeng.com/wiki/1022910821149312)  
+[菜鸟 Javascript 教程](https://www.runoob.com/js/js-intro.html)  
+[C 语言中文网 JavaScript 学习指南](http://c.biancheng.net/js)  
+[javaScript 高级编程](https://dshvv.github.io/red-treasure-book/dist)
+
+</Fieldset>
