@@ -12,4 +12,4 @@ jobs: # workflow 文件的主体，表示要执行的一项或多项任务
 
       - name: Install and Build 🔧 # 该步骤的名称
         run: | # 该步骤运行的命令或者 action
-          ll
+          ls
