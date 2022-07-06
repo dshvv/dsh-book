@@ -5,7 +5,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "丁少华",
-  url: "https://dingshaohua.com", // seo
+  url: "https://huashaoding.com", // seo
   baseUrl: '/',
   // baseUrl: "/dsh-book/build/",
   onBrokenLinks: "throw",
