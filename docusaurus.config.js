@@ -2,12 +2,14 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
+// 是否部署在gitPage上
+const useGpage = process.env.BUILD_ENV === 'gitPage';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "丁少华",
   url: "https://huashaoding.com", // seo
-  // baseUrl: '/',
-  baseUrl: "/dsh-book/",
+  baseUrl: useGpage?"/dsh-book/":'/',
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
