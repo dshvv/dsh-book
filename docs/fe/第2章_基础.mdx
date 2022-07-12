@@ -2,9 +2,10 @@
 title: 第2章 基础
 hide_title: true
 ---
-
+import BilibiliPlayer from "/src/components/BilibiliPlayer";
 import Fieldset from "/src/components/Fieldset";
 import { Mermaid } from "mdx-mermaid/Mermaid";
+
 
 网页由 3 个部分构成，分别是 html、css、js，我们将其称为`三剑客`。
 
@@ -29,58 +30,70 @@ import { Mermaid } from "mdx-mermaid/Mermaid";
 一个网页，可以看作是一个个小盒子构成。我们利用 html+css 来画出一个个小盒子来组装成完整页面。  
 ![fe-2.2](/img/fe/2.2.png)
 
-<hr/>
+<hr />
 
---- 举个例子 ![fe-2.3](/img/fe/2.3.webp) ---   
-我们来写一个 html 如下： div 相当于画出的一个盒子，里边的内容是 “你好，世界”    
+--- 举个例子 ![fe-2.3](/img/fe/2.3.webp) ---  
+我们来写一个 html 如下： div 相当于画出的一个盒子，里边的内容是 “你好，世界”
+
 ```html
 <div>你好，世界</div>
 ```
-![fe-2.4](/img/fe/2.4.jpg)  
 
-
-
+![fe-2.4](/img/fe/2.4.jpg)
 
 我们用 css 给盒子添些样式： 将盒内字体颜色设为蓝色，盒子的背景设置成粉红色
+
 ```html
 <div style="color:red; background-color: blue;">你好，世界</div>
 ```
-![fe-2.5](/img/fe/2.5.jpg)  
 
+![fe-2.5](/img/fe/2.5.jpg)
 
-至此，我们已经画了一个好看的盒子了！   
-而复杂的页面，都是由这些盒子一个个拼起来的。   
-所以目前为止，你已经掌握了如何写页面了，看就是这么简单！   
-![fe-2.6](/img/fe/2.6.webp)  
+至此，我们已经画了一个好看的盒子了！  
+而复杂的页面，都是由这些盒子一个个拼起来的。  
+所以目前为止，你已经掌握了如何写页面了，看就是这么简单！  
+![fe-2.6](/img/fe/2.6.webp)
 
 ## 交互 ( javaScript )
 
-截至目前，我们写的页面还只是纯静态的，尚不能和浏览器以及页面进行交互。    
+截至目前，我们写的页面还只是纯静态的，尚不能和浏览器以及页面进行交互。  
 而通过 js 我们则可以跟页面实现动态交互：页面上有一个按钮，点一下
-<button onClick={()=>{alert('你好')}}>测试</button>
+
+<button
+  onClick={() => {
+    alert("你好");
+  }}
+>
+  测试
+</button>
 
 ```html
 <button onclick="test">测试</button>
 <script>
-  function test(){
-    alert('你好')
+  function test() {
+    alert("你好");
   }
 </script>
 ```
-不错，网页编程的最后一门技能`js`你也会了。   
+
+不错，网页编程的最后一门技能`js`你也会了。  
 你现在已经具备了开发一个完整项目的能力了，放在几年前 你就可以找到一份月薪几千的前端开发工作了！
-![fe-2.7](/img/fe/2.7.webp) 
+![fe-2.7](/img/fe/2.7.webp)
 
 ## 教程
+
 我上边讲的很粗糙，还有很多细节，需要你仔细耐心的去学习。为此 我为你在网上 精心挑选了一些优秀的教程！
+### 5分钟学会 HTML
+<BilibiliPlayer src="https://player.bilibili.com/player.html?bvid=BV14V411Z7Bo&amp;high_quality=1"/> 
 
-<Fieldset title="🦜html+css+js">
+### 李巍 web前端入门
+若买不起正版[可在这里免费看](https://www.aliyundrive.com/s/ypVYReHkhCE)的  
+[![fe-2.8](/img/fe/2.8.jpg)](https://www.bilibili.com/cheese/play/ep7584)
 
---视频--  
-[Web 前端入门](https://www.bilibili.com/cheese/play/ep7585)若买不起正版可来看[盗版](https://www.aliyundrive.com/s/ypVYReHkhCE)的  
-[千锋 web 前端开发项目教程](https://www.bilibili.com/video/BV17z4y1D7Yj)
+### 千锋 web前端
+<BilibiliPlayer src="https://player.bilibili.com/player.html?bvid=BV17z4y1D7Yj&amp;high_quality=1"/> 
 
-</Fieldset>
+### 在线阅读教程
 
 <Fieldset title="🦜html、css">
 
@@ -92,9 +105,6 @@ import { Mermaid } from "mdx-mermaid/Mermaid";
 
 [css-->《菜鸟教程》CSS 教程](https://www.runoob.com/css)  
 [css-->《w3school》CSS 教程](https://www.w3school.com.cn/css/index.asp)
-
---视频--  
-[5 分钟学会 HTML 网页制作](https://www.bilibili.com/video/BV14V411Z7Bo)
 
 </Fieldset>
 

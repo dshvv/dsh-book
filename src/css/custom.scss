@@ -127,6 +127,11 @@
     width: 500px;
   }
 
+  img[alt="fe-2.8"] {
+    @include br;
+    width: 100%;
+  }
+
   img[alt="fe-4.1"] {
     @include bs;
     width: 100px;
