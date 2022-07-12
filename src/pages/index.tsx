@@ -20,9 +20,9 @@ export default function Home(): JSX.Element {
         return <Layout>
           <main>
             <div className={styles.HomeMain}>
-              <div className={styles.bg}>
+              {/* <div className={styles.bg}>
                 <video className={styles.fmBoy} src={bgVideo} loop muted autoPlay />
-              </div>
+              </div> */}
               <div className={styles.content}>
                 <div className={styles.box}>
                   <div className={styles.img}><img src={require('@site/static/img/home/logo.gif').default} /></div>

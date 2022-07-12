@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env BUILD_ENV=gitPage docusaurus start",
+    "start": "docusaurus start",
     "build": "docusaurus build",
     "build:gitPage": "cross-env BUILD_ENV=gitPage docusaurus build"
   },

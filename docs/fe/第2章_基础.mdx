@@ -1,34 +1,41 @@
 ---
 title: 第2章 基础
+hide_title: true
 ---
 
 import CodeBlock from "@theme/CodeBlock";
 import CodeSandbox from "/src/components/CodeSandbox";
 import Fieldset from "/src/components/Fieldset";
+import { Mermaid } from "mdx-mermaid/Mermaid";
 
-网页由 3 个部分构成，分别是 html、css、js。    
-其中 html+css 来构成网页的布局，而 js 是沟通用户和浏览器交互的桥梁。   
-我们将其称为`三剑客`。    
-它们是前端开发者的基础、立命之本！     
-强烈建议把它们学熟之后，再学后边的知识！
+网页由 3 个部分构成，分别是 html、css、js，我们将其称为`三剑客`。
+
 <Mermaid
   chart={`graph TB;
     前端-->Html;
     前端-->Css;
+    Html-->布局;
+    Css-->布局;
     前端-->JavaScript;
+    JavaScript-->沟通用户和浏览器交互的桥梁;
 `}
-/>   
+/>{" "}
 
+它们是前端开发者的基础、立命之本, 强烈建议把它们学熟之后，再学后边的知识！
 
 ## 布局 ( html+css )
 
-编写网页，就像你绘画一样，  
-其中 html 就是你用画笔素描基本的轮廓。  
-而 css 就是你给素描上色修饰填充。
+编写网页就像你绘画一样，其中 html 就是你用铅笔素描基本的轮廓，而 css 就是你给素描上色修饰填充。  
+![fe-2.1](/img/fe/2.1.jpg)
 
+一个网页，可以看作是一个个小盒子构成。我们利用 html+css 来画出一个个小盒子来组装成完整页面。  
+![fe-2.2](/img/fe/2.2.png)
+
+
+举个例子 ![fe-2.3](/img/fe/2.3.webp)    
 我们来写一个 html 如下： div 相当于画出的一个盒子，里边的内容是 “你好，世界”
 
-<CodeSandbox  file="/DocsFe/HtmlCss/2-1" />
+<CodeSandbox file="/DocsFe/HtmlCss/2-1" />
 
 我们用 css 给盒子添些样式: 将盒内字体颜色设为蓝色，盒子的背景设置成粉红色
 
