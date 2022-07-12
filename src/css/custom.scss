@@ -67,19 +67,25 @@
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
   }
 
-  img[alt="1.2"] {
+  @mixin br {
+    border-radius: 8px;
+  }
+
+  img[alt="fe-1.2"] {
     width: 400px;
   }
 
-  img[alt="1.3"] {
+  img[alt="fe-1.3"], img[alt="fe-1.4"] {
+    @include br;
     width: 500px;
   }
 
-  img[alt="3.1"] {
+  img[alt="fe-3.1"] {
     width: 500px;
+  
   }
 
-  img[alt="3.2"] {
+  img[alt="fe-3.2"] {
     width: 100px;
   }
 
@@ -116,6 +122,11 @@
     width: 200px;
   }
 
+  img[alt="fe-2.7"] {
+    @include br;
+    width: 500px;
+  }
+
   img[alt="fe-4.1"] {
     @include bs;
     width: 100px;
@@ -139,6 +150,8 @@
   img[alt="fe-5.3"], img[alt="fe-5.4"] {
     @include bs;
   }
+
+
 
  
   
