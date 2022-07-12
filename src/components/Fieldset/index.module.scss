@@ -1,14 +1,22 @@
 .Fieldset {
-    margin: 10px 0;
-    background-color: rgb(246 248 250);
-    border-radius: 8px;
+    margin: 30px 0;
+    border-radius: 18px;
+    position: relative;
+    border: #2e8555 solid 2px;
+    padding: 20px;
     .title{
-        border-bottom: 1px solid #dcdddecc;
-        padding: 10px;
-        color: blue;
+        padding: 10px 18px;
+        color: #2e8555;
+        position: absolute;
+        top: -26px;
+        left: 10px;
+        background-color: white;
+        font-size: 20px;
+        font-weight: 800;
     }
     .content{
         padding: 10px;
+        
     }
     p{
         margin: 0;
