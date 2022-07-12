@@ -107,6 +107,15 @@
     width: 60px;
   }
 
+  img[alt="fe-2.4"],img[alt="fe-2.5"] {
+    @include bs;
+    width: 200px;
+  }
+
+  img[alt="fe-2.6"] {
+    width: 200px;
+  }
+
   img[alt="fe-4.1"] {
     @include bs;
     width: 100px;
