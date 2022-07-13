@@ -1,6 +1,7 @@
 @media only screen and (max-width: 640px) {
     .player {
-        width: 140px;
+        width: calc(50% - 20px);
+
         .txt {
             font-size: 12px;
         }
@@ -14,43 +15,46 @@
 }
 
 .MockPlayer {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
+    .removeMargin {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -20px;
+        .player {
+            margin-left: 20px;
+            margin-bottom: 16px;
+            cursor: pointer;
 
-    .player {
-        margin-left: 20px;
-        margin-bottom: 16px;
-        cursor: pointer;
+            .video {
+                background-color: black;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 6px;
 
-        .video {
-            background-color: black;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 6px;
-
-            img {
-                width: 60px;
+                img {
+                    width: 60px;
+                }
             }
-        }
 
-        .txt {
-            .tipIcon{
-                display: inline-block;
-                font-size: 14px;
-                margin-right: 4px;
-            }
-            .title {}
+            .txt {
+                .tipIcon {
+                    display: inline-block;
+                    font-size: 14px;
+                    margin-right: 4px;
+                }
 
-            .desc {
-                
-                font-size: 12px;
-                color: rgb(153, 153, 150);
+                .title {}
+
+                .desc {
+
+                    font-size: 12px;
+                    color: rgb(153, 153, 150);
+                }
             }
         }
     }
+
 
 
 }
