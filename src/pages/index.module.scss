@@ -1,68 +1,11 @@
-@media only screen and (max-width: 640px) {
-  .fmBoy {
-    width: 70%;
-  }
+.navbar{
+  display: none;
 }
-@media only screen and (min-width: 640px) {
-  .fmBoy {
-    width: 50%;
-  }
-}
-
 .HomeMain {
-  .bg {
-    width: 100%;
-    height: calc(100vh - 60px);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: fill ;
-    .fmBoy {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  .content {
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .box{
-      width: 360px;
-      position: absolute;
-      bottom: 14%;
-      background-color: rgba($color: #ffffff, $alpha: 0.2);
-      padding: 20px 0;
-      border-radius: 10px;
-      .img {
-        text-align: center;
-        // opacity: 0.5;
-        img {
-          width: 80%;
-        }
-      }
-      .btn {
-        text-align: center;
-        margin-top: 10px;
-        button {
-          border: none;
-          border-radius: 2px;
-          color: white;
-          font-size: 1.2rem;
-          padding: 10px 20px;
-          background-color: red;
-          cursor: pointer;
-          margin: auto;
-        }
-      }
+    padding: 10px;
+    .book{
+      cursor: pointer;
     }
-    
-  }
 }
