@@ -6,3 +6,5 @@ export const books =  [
         path: '/fe/第1章_前言'
     }
 ]
+
+export default {}
