@@ -8,8 +8,8 @@
     "build:gitPage": "cross-env BUILD_ENV=gitPage docusaurus build"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.21",
-    "@docusaurus/preset-classic": "2.0.0-beta.21",
+    "@docusaurus/core": "2.0.0-rc.1",
+    "@docusaurus/preset-classic": "2.0.0-rc.1",
     "@mdx-js/react": "^1.6.22",
     "antd": "^4.21.6",
     "clsx": "^1.1.1",
@@ -23,7 +23,7 @@
     "sass": "^1.52.3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.0.0-beta.21",
+    "@docusaurus/module-type-aliases": "2.0.0-rc.1",
     "@tsconfig/docusaurus": "^1.0.5",
     "cross-env": "^7.0.3",
     "typescript": "^4.6.4"
