@@ -1,11 +1,90 @@
-.navbar{
-  display: none;
-}
-.HomeMain {
-    width: 100%;
+  @media only screen and (max-width: 640px) {
+    .HomeMain {
+      width: 100%;
+      .book {
+        height: 160px;
+        width: 170px;
+        img{
+          height: 100px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 640px) {
+    .HomeMain {
+      .books {
+        .book {
+          height: 200px;
+          width: 227px;
+          img{
+            height: 140px;
+          }
+        }
+      }
+    }
+  }
+
+  .HomeMain {
+    max-width: 960px;
+    margin: auto;
     height: 100%;
     padding: 10px;
-    .book{
-      cursor: pointer;
+
+    .banner {
+      position: relative;
+
+      img {
+        width: 100%;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+
+      .tip {
+        position: absolute;
+        top: 40%;
+        left: 10px;
+        color: white;
+        text-shadow: 2px 2px 5px black;
+
+        &>div {
+          &:nth-of-type(1) {
+            font-weight: 700;
+            font-size: 16px;
+          }
+
+          &:nth-of-type(2) {
+            font-weight: normal;
+            font-size: 12px;
+          }
+        }
+      }
     }
-}
+
+    .books {
+      margin-top: 10px;
+      cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -10px;
+      .book{
+        margin-left: 10px;
+        margin-bottom: 10px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        img{
+          width: 100%;
+          object-fit: cover;
+        }
+        .text{
+          padding: 10px;
+          .title {}
+
+          .desc {
+            
+              font-size: 12px;
+              color: rgb(153, 153, 150);
+          }
+        }
+      }
+    }
+  }

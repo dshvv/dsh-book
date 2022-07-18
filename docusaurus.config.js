@@ -79,13 +79,13 @@ const config = {
           {
             type: "doc",
             docId: "1、初识",
-            label: "redux",
+            label: "Redux",
           },
           {
             docsPluginId: "life-module",
             type: "doc",
             docId: "认识我",
-            label: "碎碎念",
+            label: "关于我",
           },
         ],
       },
