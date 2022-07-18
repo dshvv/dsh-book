@@ -3,8 +3,6 @@ import React from "react";
 import styles from "./index.module.scss";
 import playCircle from "@site/static/img/fe/playCircle.png";
 
-console.log(playCircle);
-
 const MockPlayer = (props) => {
   const onClick = (src) => {
     window.open(src);

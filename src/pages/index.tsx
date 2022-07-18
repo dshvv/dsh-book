@@ -4,8 +4,8 @@ import Layout from '@theme/Layout';
 import styles from './index.module.scss';
 import Link from '@docusaurus/Link';
 import { useHistory } from '@docusaurus/router';
-import { Card } from 'antd';
-import { books } from './helper';
+// import { Card } from 'antd';
+// import { books } from './helper';
 
 
 
@@ -24,7 +24,7 @@ export default function Home(): JSX.Element {
     <main>
       <div className={styles.HomeMain}>
 
-        {books.map((item, index) => (
+        {/* {books.map((item, index) => (
           <div className={styles.book} key={index}>
             <Card
               onClick={() => { onStart(item.path) }}
@@ -43,7 +43,7 @@ export default function Home(): JSX.Element {
             </Card>
           </div>
 
-        ))}
+        ))} */}
 
         {/* <div className={styles.box}>
                   <div className={styles.img}><img src={require('@site/static/img/home/logo.gif').default} /></div>
