@@ -22,7 +22,7 @@ import CodeBlock from "@theme/CodeBlock";
 于是便有了 提升开发体验、效率和质量，提升应用的访问性能等手段（工具和技术）。
 
 这就是前端工程化！
-
+<!-- 
 |  |   |
 | --- | --- |
 | 脚手架工具 | vue-cli、create-react-app ... |
@@ -34,7 +34,7 @@ import CodeBlock from "@theme/CodeBlock";
 
 参考：
 https://www.cnblogs.com/onebox/p/9570518.html
-https://zhuanlan.zhihu.com/p/374753110
+https://zhuanlan.zhihu.com/p/374753110 -->
 
 
 
@@ -50,10 +50,13 @@ https://zhuanlan.zhihu.com/p/374753110
 脚手架就是快速搭建项目基础代码的工具。   
 用脚手架创建的项目 会帮助你自动集成了很多工程化所需的内容。
 
+查用的脚手架如：
+[vue脚手架](https://cli.vuejs.org/zh/guide)、[reac脚手架](https://create-react-app.bootcss.com/)
+
 虽然方便了，但是这并不利于学习底层知识，如果想学习工程化技术，就不能完全依赖它！
 
-## babel
-
+## 编译器
+### babel
 语法编译工具，更多请看[官网教程](https://www.babeljs.cn)。  
 它能将新版 js 编写的代码转换为向后兼容的 js 语法，以便运行在旧浏览器或其他环境中。
 
@@ -76,7 +79,8 @@ const i = 123;
 </TabItem>
 </Tabs>
 
-## webpack
+## 打包器
+### webpack
 
 模块打包器，更多请看[官网教程](https://webpack.docschina.org)。  
 [模块化技术](https://www.cnblogs.com/dingshaohua/p/8371018.html) 2015 年 在前端兴起。  
@@ -159,7 +163,7 @@ webpack ./index.js --mode=development
 可以看到 webpack 对分包的处理，特别的复杂,
 完全自己实现了一套模块化处理机制方案，来兼容个大浏览器。
 
-## rollup
+### rollup
 
 模块打包器，更多请看[官网教程](https://www.rollupjs.com)。  
 和 webpack 功能基本一样，是其竞品。不过和 webpack 的区别在于：  
@@ -216,6 +220,63 @@ export { add };
 
 📣 得出结论，webpack 和 babel 应用场景不同：
 应用开发用 前者，类库的开发则用 后者
+
+### esbuild
+模块打包器，同事也具备babel的功能。
+
+拿上面 webpack 那个例子，改为 esbuild 编译
+--bundle 表示需要编译，默认原样输出     
+--splitting 代表分割代码，默认不分割   
+--format=esm 代表输出模块类型，splitting仅支持esm   
+
+```shell
+  esbuild ./src/index.js --bundle --outdir=build --splitting --format=esm
+```
+
+命令执行完成后，会在项目根目录下生成`build`目录，这里边就是其处理好的 js 文件。最后 `index.html` 里引入即可。
+
+<Tabs>
+<TabItem value="index.html" label="index.html">
+
+```html title="index.html"
+<button>1+2=?</button>
+<script src="./build/index.js"></script>
+```
+
+</TabItem>
+<TabItem value="index.js" label="index.js">
+
+```js title="build/index.js"
+// src/index.js
+var btn = document.querySelector("button");
+btn.onclick = async () => {
+  const { add } = await import("./utils-YOWK4GEG.js");
+  const res = add(1, 2);
+  console.log(res);
+};
+```
+
+</TabItem>
+<TabItem value="utils-5c8046dd.js" label="utils-123.js">
+
+```js title="build/utils-123.js"
+// src/utils.js
+var add = (x, y) => {
+  return x + y;
+};
+export {
+  add
+};
+
+```
+
+</TabItem>
+</Tabs>
+
+可以看出 跟rollup处理模块化的方式 异曲同工之妙！
+https://esbuild.github.io/
+
+
 
 <!-- 前端工程化工具总结和对比
 包管理工具
