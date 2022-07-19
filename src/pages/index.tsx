@@ -3,8 +3,9 @@ import React, { useEffect } from "react";
 import Layout from "@theme/Layout";
 import styles from "./index.module.scss";
 import { useHistory } from "@docusaurus/router";
-import books from "../utils/books";
+import books, { apps } from "../utils/books";
 import homeImg from "../../static/img/home/banner.jpg";
+import msgImg from "../../static/img/home/msg.gif";
 
 export default function Home(): JSX.Element {
   useEffect(() => {
@@ -24,6 +25,22 @@ export default function Home(): JSX.Element {
     <Layout>
       <main>
         <div className={styles.HomeMain}>
+        <div className={styles.tips}>
+            <img src={msgImg} alt="msgImg" /> 全站均原创，转载需写来源
+          </div>
+          <div className={styles.apps}>
+            {apps.map((item, index) => (
+              <img
+                src={item.logo}
+                alt="item.logo"
+                className={styles.app}
+                key={index}
+                onClick={() => {
+                  onStart(item.path);
+                }}
+              />
+            ))}
+          </div>
           <div className={styles.banner}>
             <img src={homeImg} alt="homeImg" />
             <div className={styles.tip}>
@@ -34,6 +51,7 @@ export default function Home(): JSX.Element {
               </div>
             </div>
           </div>
+          
           <div className={styles.books}>
             {books.map((item, index) => (
               <div

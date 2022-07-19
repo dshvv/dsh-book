@@ -3,14 +3,10 @@ import meImg from '../../static/img/home/me.jpg';
 import feImg from '../../static/img/home/fe.png';
 import reduxImg from '../../static/img/home/redux.png';
 import redImg from '../../static/img/home/red.jpg';
+import cnblogsImg from '../../static/img/home/cnblogs.png';
+import githubImg from '../../static/img/home/github.png';
 
 export default [
-    {
-        title:'关于我',
-        description:'自我介绍',
-        logo: meImg,
-        path: '/life/认识我'
-    },
     {
         title:'前端学习',
         description:'小白新手指导',
@@ -28,5 +24,23 @@ export default [
         description:'第四版JS高编',
         logo: redImg,
         path: 'https://dshvv.github.io/red-treasure-book/dist'
+    }
+]
+
+export const apps =  [
+    {
+        title:'关于我',
+        logo: meImg,
+        path:'/life/认识我'
+    },
+    {
+        title:'博客园',
+        logo: cnblogsImg,
+        path:'https://www.cnblogs.com/dingshaohua'
+    },
+    {
+        title:'github',
+        logo: githubImg,
+        path:'https://github.com/dshvv'
     }
 ]
