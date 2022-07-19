@@ -25,7 +25,7 @@ export default function Home(): JSX.Element {
     <Layout>
       <main>
         <div className={styles.HomeMain}>
-        <div className={styles.tips}>
+          <div className={styles.tips}>
             <img src={msgImg} alt="msgImg" /> 全站均原创，转载需写来源
           </div>
           <div className={styles.apps}>
@@ -51,29 +51,30 @@ export default function Home(): JSX.Element {
               </div>
             </div>
           </div>
-          
-          <div className={styles.books}>
-            {books.map((item, index) => (
-              <div
-                className={styles.book}
-                key={index}
-                onClick={() => {
-                  onStart(item.path);
-                }}
-              >
-                <img src={item.logo} alt="item.logo" />
-                <div className={styles.text}>
-                  <div className={styles.title}>
-                    <span dangerouslySetInnerHTML={{ __html: item.title }} />
-                  </div>
-                  <div className={styles.desc}>
-                    <span
-                      dangerouslySetInnerHTML={{ __html: item.description }}
-                    />
+          <div className={styles.content}>
+            <div className={styles.books}>
+              {books.map((item, index) => (
+                <div
+                  className={styles.book}
+                  key={index}
+                  onClick={() => {
+                    onStart(item.path);
+                  }}
+                >
+                  <img src={item.logo} alt="item.logo" />
+                  <div className={styles.text}>
+                    <div className={styles.title}>
+                      <span dangerouslySetInnerHTML={{ __html: item.title }} />
+                    </div>
+                    <div className={styles.desc}>
+                      <span
+                        dangerouslySetInnerHTML={{ __html: item.description }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </main>
