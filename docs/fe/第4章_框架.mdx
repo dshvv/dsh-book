@@ -3,10 +3,11 @@ title: 第4章 框架
 hide_title: true
 ---
 
-import Fieldset from "/src/components/Fieldset";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import { Mermaid } from "mdx-mermaid/Mermaid";
+import MockBook from "/src/components/MockBook";
+import Fieldset from "/src/components/Fieldset";
 
 从我 2015 年入行前端一职， 经历了写过原生的三剑客 HTML/CSS/Javascript 到 jQuery 搞定一切的年代。
 
@@ -50,7 +51,7 @@ react 是 facebook 出品的一个前端框架。
 同样，它也是看到了原生的缺点，顺势而出的。   
 她和vue有很大的相似之处，两者也是竞争关系
 
-<hr/>
+<Fieldset title="🌰 举个例子">
 
 说可能体现不出来框架优点，  
 我们来举个例子  
@@ -196,26 +197,38 @@ export default () => {
 </TabItem>
 </Tabs>
 
+</Fieldset>
+
 :::tip 提示
 这些框架最明显的好处是解放双手，再也不用操作 Dom 了，靠数据驱动视图，将重点放在代码和业务本身上。
 :::
 
 ## 教程
 
-<Fieldset title="🦜vue">
-
---电子书--
-
-[深入理解 Vue.js 实战](https://godbasin.github.io/vue-ebook)  
-[jc2182 vue 教程](https://www.jc2182.com/vuejs/vuejs-jiaocheng.html)  
-[vue 官方文档](https://v3.cn.vuejs.org)
-
-</Fieldset>
-
-<Fieldset title="🦜react">
-
---电子书--  
-[jc2182 react 教程](https://www.jc2182.com/react/react-jiaocheng.html)  
-[react 官方文档](https://react.docschina.org)
-
-</Fieldset>
+<MockBook
+  videos={[
+    {
+      title: "深入理解 Vue",
+      desc: "被删",
+      src: "https://godbasin.github.io/vue-ebook",
+    },
+    {
+      title: "vue 教程",
+      desc: "jc2182",
+      src: "https://www.jc2182.com/vuejs/vuejs-jiaocheng.html",
+    },
+    {
+      title: "vue 官方文档",
+      desc: "vue官方",
+      src: "https://v3.cn.vuejs.org",
+    },
+    {
+      title: "react 教程",
+      desc: "jc2182",
+      src: "https://www.jc2182.com/react/react-jiaocheng.html",
+    },
+    {
+      title: "react 官方文档",
+      desc: "react官方",
+      src: "https://react.docschina.org",
+    }]}/>

@@ -7,7 +7,7 @@ const useGpage = process.env.BUILD_ENV === 'gitPage';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "丁少华",
+  title: "丁少华的博客",
   url: "https://huashaoding.com", // seo
   baseUrl: useGpage?"/dsh-book/":'/',
   onBrokenLinks: "throw",
