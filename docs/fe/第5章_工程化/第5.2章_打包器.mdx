@@ -1,5 +1,5 @@
 ---
-title: 第5章 工程化
+title: 第5.2章 打包器
 hide_title: true
 ---
 
@@ -10,76 +10,6 @@ import WebpackBuilUtils from "!!raw-loader!/src/components/DocsFe/WebpackBuild/u
 import CodeBlock from "@theme/CodeBlock";
 
 
-![fe-5.0](/img/fe/5.0.jpg)
-
-随着 Web 业务日益复杂化和多元化，前端开发已经由以 WebPage 模式为主转变为以 WebApp 模式为主了。
-
-现在随便找个前端项目，都已经不是过去的拼个页面+搞几个 jQuery 插件就能完成的了。
-
-项目复杂了就会产生许多问题，如何进行高效的多人协作？如何保证项目的可维护性？如何提高项目的开发质量？
-...
-
-于是便有了 提升开发体验、效率和质量，提升应用的访问性能等手段（工具和技术）。
-
-这就是前端工程化！
-<!-- 
-|  |   |
-| --- | --- |
-| 脚手架工具 | vue-cli、create-react-app ... |
-| 模块化打包 | webpack、rollup |
-| 标准化工具 | eslint、styleLint、prettier |
-| 自动化构建 | npm script |
-| 自动化测试 | jest |
-| 自动化部署 | git hook、lint-staged、CI/CD |
-
-参考：
-https://www.cnblogs.com/onebox/p/9570518.html
-https://zhuanlan.zhihu.com/p/374753110 -->
-
-
-
-<!-- 
-前端工程化大概有几个知识点：  
-1、组件化、模块化  
-2、规范化  
-3、自动化
-
-下边我将常用的工程化工具和技术一一列出。 -->
-## 脚手架
-在学习框架的时候，其实已经用到了脚手架。        
-脚手架就是快速搭建项目基础代码的工具。   
-用脚手架创建的项目 会帮助你自动集成了很多工程化所需的内容。
-
-查用的脚手架如：
-[vue脚手架](https://cli.vuejs.org/zh/guide)、[reac脚手架](https://create-react-app.bootcss.com/)
-
-虽然方便了，但是这并不利于学习底层知识，如果想学习工程化技术，就不能完全依赖它！
-
-## 编译器
-### babel
-语法编译工具，更多请看[官网教程](https://www.babeljs.cn)。  
-它能将新版 js 编写的代码转换为向后兼容的 js 语法，以便运行在旧浏览器或其他环境中。
-
-```js
-const i = 123;
-```
-
-如上代码 在古老的 ie8 上直接使用就会报错“不识别” ，通过 babel 处理后的代码则明显可以兼容旧浏览器
-
-<Tabs>
-<TabItem value="直接使用" label="直接使用" default>
-
-![fe-5.1](/img/fe/5.1.png)
-
-</TabItem>
-<TabItem value="babel处理" label="babel处理" >
-
-![fe-5.2](/img/fe/5.2.jpg)
-
-</TabItem>
-</Tabs>
-
-## 打包器
 ### webpack
 
 模块打包器，更多请看[官网教程](https://webpack.docschina.org)。  

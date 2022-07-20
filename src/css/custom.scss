@@ -157,4 +157,8 @@
   img[alt="fe-5.3"], img[alt="fe-5.4"] {
     @include bs;
   }
+  img[alt="fe-20227201647"]{
+    @include bs;
+    width: 400px;
+  }
 }

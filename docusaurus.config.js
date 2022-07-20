@@ -58,6 +58,15 @@ const config = {
         sidebarPath: require.resolve("./sidebars.js"),
       },
     ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "babel-module",
+        path: "docs/babel",
+        routeBasePath: "babel",
+        sidebarPath: require.resolve("./sidebars.js"),
+      },
+    ],
   ],
 
   themeConfig:
@@ -75,6 +84,12 @@ const config = {
             type: "doc",
             docId: "第1章_前言",
             label: "前端学习",
+          },
+          {
+            docsPluginId: "babel-module",
+            type: "doc",
+            docId: "第1章_前言",
+            label: "Babel",
           },
           {
             type: "doc",

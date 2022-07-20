@@ -1,0 +1,50 @@
+---
+title: 第5.1章 转换器
+hide_title: true
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import WebpackBuildMain from "!!raw-loader!/src/components/DocsFe/WebpackBuild/main.js";
+import WebpackBuilUtils from "!!raw-loader!/src/components/DocsFe/WebpackBuild/utils_js.js";
+import CodeBlock from "@theme/CodeBlock";
+
+JS 这门语言受限于历史因素，有许多问题，其中一个就是新的语言特性始终无法在浏览器中得到全面支持与应用。
+
+如果你要写一个支持绝大多数浏览器的网页，最好的选择可能就是 ES5(旧版本的 JS)了，但你要知道 ES5 之后，JS 也一直在不停的更新，其中最重要的一个版本是 ES 6，而到今年 2022 年，已经是 ES 2022（ES13）了。
+
+和其它语言不同，JS 是要在浏览器中运行，这就决定了你在使用 JS 时不得不考虑浏览器的支持情况。
+
+而浏览器一方面对新特性的支持需要时间，再一个你还得考虑旧版本浏览器还是有很多人在用，这就造成一个困境：
+
+“你可能不敢使用最新版本的 JS 语言特性”
+
+但所幸，babel 横空出世，它就是一个作用：转换，将你写的 JS 转换成大多数浏览器都支持的语法样式。
+
+这样，你就能够在使用 JS 最新的特性的同时，而又不用担心浏览器的兼容性问题了。
+
+确实很棒的东西，甚至你可以说它挽救了 JS！
+
+再此之后很多转换器也纷纷亮相。
+
+### babel
+
+如下代码 在旧版浏览器会报错“不识别” ，通过 babel 处理后的代码则明显可以兼容旧浏览器
+```js
+const i = 123;
+```
+
+
+
+<Tabs>
+<TabItem value="直接使用" label="直接使用" default>
+
+![fe-5.1](/img/fe/5.1.png)
+
+</TabItem>
+<TabItem value="babel处理" label="babel处理" >
+
+![fe-5.2](/img/fe/5.2.jpg)
+
+</TabItem>
+</Tabs>
