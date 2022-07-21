@@ -67,6 +67,15 @@ const config = {
         sidebarPath: require.resolve("./sidebars.js"),
       },
     ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "webpack-module",
+        path: "docs/webpack",
+        routeBasePath: "webpack",
+        sidebarPath: require.resolve("./sidebars.js"),
+      },
+    ]
   ],
 
   themeConfig:
@@ -90,6 +99,12 @@ const config = {
             type: "doc",
             docId: "第1章_前言",
             label: "Babel",
+          },
+          {
+            docsPluginId: "webpack-module",
+            type: "doc",
+            docId: "第1章_前言",
+            label: "Webpack",
           },
           {
             type: "doc",

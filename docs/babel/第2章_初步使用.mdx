@@ -148,7 +148,7 @@ npx babel ./src/index.js --out-dir dist
 
 ## 垫片
 
-babel 默认情况下 只转换语法如箭头函数, let, const等等），而不会处理新特/api（如 Set，Map，Array的from方法、Promeise等等）。
+babel 默认情况下 只转换语法如箭头函数, let, const, class等等），而不会处理新特/api（如 Set，Map，Array的from方法、Promeise等等）。
 
 <Tabs>
 <TabItem value="源代码" label="源代码">
@@ -192,7 +192,7 @@ promise.then(res=>{
 ```
 
 如上方式虽然解决了问题，但是会引入全部特性的垫片(core-js/stable包含所有的垫片内容)，而我只需要里边的Promise的垫片。   
-别着急@babel/preset-env这个预设提供了一个useBuiltIns配置项。
+别着急@babel/preset-env这个预设提供了一个useBuiltIns配置项，设置后我们再次编译
 ```js
 {
   "presets": [
@@ -206,7 +206,7 @@ promise.then(res=>{
   ]
 }
 ```
-然后再次编译
+
 <Tabs>
 <TabItem value="源代码" label="源代码">
 
@@ -234,5 +234,6 @@ promise.then(function (res) {
 </Tabs>
 
 
-## 关于模块
-babel
+:::warning
+babel默认只处理JS， 且不处理模块，不打包，只做代码转换！
+:::

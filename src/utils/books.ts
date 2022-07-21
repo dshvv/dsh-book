@@ -14,6 +14,18 @@ export default [
         path: '/fe/第1章_前言'
     },
     {
+        title:'Babel教程',
+        description:'Babel教程',
+        logo: redImg,
+        path: '/babel/第1章_前言'
+    },
+    {
+        title:'Webpack教程',
+        description:'Webpack教程',
+        logo: redImg,
+        path: '/webpack/第1章_前言'
+    },
+    {
         title:'Redux教程',
         description:'Redux使用说明',
         logo: reduxImg,
