@@ -192,7 +192,8 @@ promise.then(res=>{
 ```
 
 如上方式虽然解决了问题，但是会引入全部特性的垫片(core-js/stable包含所有的垫片内容)，而我只需要里边的Promise的垫片。   
-别着急@babel/preset-env这个预设提供了一个useBuiltIns配置项，设置后我们再次编译
+别着急@babel/preset-env这个预设提供了一个useBuiltIns配置项，设置后我们再次编译。   
+它会自动分析并引入你代码中需要哪些垫片内容。
 ```js
 {
   "presets": [
