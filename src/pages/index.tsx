@@ -7,6 +7,9 @@ import books, { apps } from "../utils/books";
 import homeImg from "../../static/img/home/banner.jpg";
 import msgImg from "../../static/img/home/msg.gif";
 
+console.log(books);
+
+
 export default function Home(): JSX.Element {
   useEffect(() => {
     const navbar = document.querySelector(".navbar") as HTMLDivElement;
@@ -56,12 +59,17 @@ export default function Home(): JSX.Element {
               {books.map((item, index) => (
                 <div
                   className={styles.book}
+                  type={item.title}
                   key={index}
                   onClick={() => {
                     onStart(item.path);
                   }}
                 >
-                  <img src={item.logo} alt="item.logo" />
+                  <div className={styles.img}>
+                    <img src={item.logo} alt={item.title} />
+                  </div>
+                  
+                 
                   <div className={styles.text}>
                     <div className={styles.title}>
                       <span dangerouslySetInnerHTML={{ __html: item.title }} />

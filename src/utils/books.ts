@@ -5,6 +5,10 @@ import reduxImg from '../../static/img/home/redux.png';
 import redImg from '../../static/img/home/red.jpg';
 import cnblogsImg from '../../static/img/home/cnblogs.png';
 import githubImg from '../../static/img/home/github.png';
+import webpackImg from '../../static/img/home/webpack.png';
+import babelImg from '../../static/img/home/babel.png';
+
+
 
 export default [
     {
@@ -16,13 +20,13 @@ export default [
     {
         title:'Babel教程',
         description:'Babel教程',
-        logo: redImg,
+        logo: babelImg,
         path: '/babel/第1章_前言'
     },
     {
         title:'Webpack教程',
         description:'Webpack教程',
-        logo: redImg,
+        logo: webpackImg,
         path: '/webpack/第1章_前言'
     },
     {
