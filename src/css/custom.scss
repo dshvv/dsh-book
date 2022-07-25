@@ -161,4 +161,11 @@
     @include bs;
     width: 400px;
   }
+
+  img[alt="fe-20227251144"]{
+    @include bs;
+    @include br;
+    width: 140px;
+  }
+  
 }

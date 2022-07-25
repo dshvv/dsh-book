@@ -1,99 +1,12 @@
 ---
-title: 第5.2章 打包器
+title: 第4章 对比其它工具
 hide_title: true
 ---
-
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import WebpackBuildMain from "!!raw-loader!/src/components/DocsFe/WebpackBuild/main.js";
-import WebpackBuilUtils from "!!raw-loader!/src/components/DocsFe/WebpackBuild/utils_js.js";
-import CodeBlock from "@theme/CodeBlock";
 
 
-### webpack
-
-模块打包器，更多请看[官网教程](https://webpack.docschina.org)。  
-[模块化技术](https://www.cnblogs.com/dingshaohua/p/8371018.html) 2015 年 在前端兴起。  
-使用此技术，可以让代码变整洁、清晰。
-
-<Tabs>
-<TabItem value="index.html" label="index.html" default>
-
-```html
-<button>1+2=?</button>
-<script src="./index.js"></script>
-```
-
-</TabItem>
-<TabItem value="index.js" label="index.js">
-
-```js
-const btn = document.querySelector("button");
-
-btn.onclick = async () => {
-  const { add } = await import("./utils.js");
-  const res = add(1, 2);
-  console.log(res);
-};
-```
-
-</TabItem>
-<TabItem value="utils.js" label="utils.js">
-
-```js
-export const add = (x, y) => {
-  return x + y;
-};
-```
-
-</TabItem>
-
-</Tabs>
-
-😒😒😒😒😒😒😒😒😒😒  
-不过，截至到 2022 年，  
-也就最新的 chrome 实现了对模块化的支持。  
-其它浏览器均会无法识别。  
-![fe-5.3](/img/fe/5.3.jpg)
-
-👇👇🌹🌺🌻🌼🌸💐👇👇  
-于是，webpack 上场了。
-
-> 引用官方的话：webpack 是 js 模块处理的工具、模块打包器。它根据模块的依赖关系进行分析，然后生成对应的静态资源。
-
-如上代码，用 webpack 处理：
-
-```shell
-webpack ./index.js --mode=development
-```
-
-命令执行完成后，会在项目根目录下生成`dist`目录，这里边就是其处理好的 js 文件。最后 `index.html` 里引入即可。
-
-<Tabs>
-<TabItem value="index.html" label="index.html" default>
-
-```html title="index.html"
-<button>1+2=?</button>
-<script src="./dist/main.js"></script>
-```
-
-</TabItem>
- <TabItem value="main.js" label="main.js">
-    <CodeBlock language="js" title="dist/main.js">
-      {WebpackBuildMain}
-    </CodeBlock>
-  </TabItem>
-  <TabItem value="utils_js.js" label="utils_js.js">
-    <CodeBlock language="js" title="dist/utils_js.js">
-      {WebpackBuilUtils}
-    </CodeBlock>
-  </TabItem>
-</Tabs>
-
-可以看到 webpack 对分包的处理，特别的复杂,
-完全自己实现了一套模块化处理机制方案，来兼容个大浏览器。
-
-### rollup
+## rollup
 
 模块打包器，更多请看[官网教程](https://www.rollupjs.com)。  
 和 webpack 功能基本一样，是其竞品。不过和 webpack 的区别在于：  
@@ -151,8 +64,8 @@ export { add };
 📣 得出结论，webpack 和 babel 应用场景不同：
 应用开发用 前者，类库的开发则用 后者
 
-### esbuild
-模块打包器，同事也具备babel的功能。
+## esbuild
+[esbuild](https://esbuild.github.io/)模块打包器，同事也具备babel的功能。
 
 拿上面 webpack 那个例子，改为 esbuild 编译
 --bundle 表示需要编译，默认原样输出     
@@ -203,8 +116,10 @@ export {
 </TabItem>
 </Tabs>
 
-可以看出 跟rollup处理模块化的方式 异曲同工之妙！
-https://esbuild.github.io/
+可以看出 跟rollup处理模块化的方式 异曲同工之妙！   
+不过可以明显看出 esbuild不但处理了模块打包，并且还处理了代码转换，这是和webpack与rollup的最大区别。      
+其实本人一直觉得这样挺好，谁规定要分es6语法转换、es6模块打包 那么多概念，统称为es6+代码处理器不就行了！
+
 
 
 

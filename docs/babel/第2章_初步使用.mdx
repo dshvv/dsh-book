@@ -24,12 +24,23 @@ yarn add --dev  @babel/core
 
 ```js
 const babel = require("@babel/core");
-const res = babel.transformSync("const i = 123;");
+
+// 参数
+const code = 'const i = 123;';
+const options = {
+    plugin:[
+        'babel/plugin-transform-block-scoping'
+    ]
+};
+
+// 执行转换
+const res = babel.transformSync(code, options);
+
 // 打印转换后的代码: var i = 123;
 console.log(res.code);
 ```
 
-## 终端工具
+## 终端工具库
 
 @babel/cli 是一个能够从终端（命令行）使用的工具。通过以下命令安装
 
@@ -47,7 +58,7 @@ npx babel src --out-dir lib
 
 ## 插件和预设
 
-代码转换功能以插件的形式出现，插件是小型的 Js 程序，用于指导 Babel 如何对代码进行转换。你甚至可以编写自己的插件将你所需要的任何代码转换功能应用到你的代码上。
+代码转换功能以[插件](https://www.babeljs.cn/docs/plugins)的形式出现，插件是小型的 Js 程序，用于指导 Babel 如何对代码进行转换。你甚至可以编写自己的插件将你所需要的任何代码转换功能应用到你的代码上。
 
 例如将 es6 的箭头函数转为 es5 普通函数，我们可以使用官方插件 `@babel/plugin-transform-arrow-functions` ：
 
@@ -81,7 +92,7 @@ console.log(add(a, b));
 </TabItem>
 </Tabs>
 
-这是个好的开始！但是我们的代码中仍然残留了其他 ES2015+ 的特性，我们希望对它们也进行转换。我们不需要一个接一个地添加所有需要的插件，我们可以使用一个 "preset" （即一组预先设定的插件）。就像插件一样，你也可以根据自己所需要的插件组合创建一个自己的 preset 并将其分享出去。
+这是个好的开始！但是我们的代码中仍然残留了其他 ES2015+ 的特性，我们希望对它们也进行转换。我们不需要一个接一个地添加所有需要的[插件](https://www.babeljs.cn/docs/plugins-list)，我们可以使用一个 "[preset](https://www.babeljs.cn/docs/presets)" （即一组预先设定的插件）。就像插件一样，你也可以根据自己所需要的插件组合创建一个自己的 preset 并将其分享出去。
 
 对于如上的例子，我们可以安装官方出的预设包`@babel/preset-env`，这个包里包含了很多常用的转换插件。
 
@@ -238,3 +249,10 @@ promise.then(function (res) {
 :::warning
 babel默认只处理JS， 且不处理模块，不打包，只做代码转换！
 :::
+
+
+## 小结
+1. babel分为核心包和终端工具包，这两个包是babel的基石。
+2. babel如果不配置任何插件或者预设 那么处理后的代码和源码保持一致，不做任何转换。
+3. babel只转换语法，不转换新增api，新增api需要使用垫片解决。
+4. babel默认只处理js，且只处理js语法转换，并不处理打包。
